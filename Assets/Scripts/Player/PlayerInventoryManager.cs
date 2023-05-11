@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerInventoryManager : MonoBehaviour
 {
     [SerializeField] PlayerItemsManager playerItemsManager;
+    [SerializeField] PlayerWallet playerWallet;
+    [SerializeField] TextMeshProUGUI playerCashText;
+
     [SerializeField] InventoryItemHolder inventoryItemPrefab;
     [SerializeField] GameObject playerInventory;
     [SerializeField] RectTransform inventoryListContent;
@@ -44,6 +48,7 @@ public class PlayerInventoryManager : MonoBehaviour
             newItem.gameObject.SetActive(true);
             newItem.Item = ownedItem.Value;
             instantiatedInventoryItems.Add(ownedItem.Value.Name, newItem);
-        } 
+        }
+        playerCashText.text = "Cash: " + playerWallet.CurrentCash;
     }
 }

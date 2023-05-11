@@ -25,7 +25,15 @@ public class PlayerItemsManager : MonoBehaviour
 
     public void EquipNewItem(Item equipItem)
     {
-        equippedItems[equipItem.Type] = equipItem;
-        itemRenderers[equipItem.Type].sprite = equipItem.OnCharacterSprite;
+        if (equippedItems.ContainsKey(equipItem.Type) && equippedItems[equipItem.Type] == equipItem) //If already has item equipped then disequips
+        {
+            equippedItems[equipItem.Type] = null;
+            itemRenderers[equipItem.Type].sprite = null;
+        }
+        else
+        {
+            equippedItems[equipItem.Type] = equipItem;
+            itemRenderers[equipItem.Type].sprite = equipItem.OnCharacterSprite;
+        }
     }
 }
