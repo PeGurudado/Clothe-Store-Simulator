@@ -12,10 +12,13 @@ public class Item
     [SerializeField] private float price;
     [SerializeField] private ItemType type;
     [SerializeField] private Sprite icon;
+    [SerializeField] private Sprite onCharacterSprite;
 
+    public ItemType Type { get => type; }
     public float Price { get => price;}
     public string Name { get => name;}
     public Sprite Icon { get => icon;}
+    public Sprite OnCharacterSprite { get => onCharacterSprite; }
 
     public Item(string name, float price, ItemType type, Sprite icon ) {
         this.name = name; 
@@ -26,6 +29,6 @@ public class Item
 
     public enum ItemType: int
     {
-        Tops, Bottoms, Shoes, Glasses
+        Tops, Bottoms, Shoes, Hats
     }
 }

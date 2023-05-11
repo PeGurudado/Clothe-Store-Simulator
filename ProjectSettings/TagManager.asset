@@ -38,6 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Player Body
+    uniqueID: 1812784625
+    locked: 0
+  - name: Player Hat
+    uniqueID: 1808954531
+    locked: 0
+  - name: Player Shoes
+    uniqueID: 3705229677
+    locked: 0
+  - name: Player Bottom
+    uniqueID: 3333645317
+    locked: 0
+  - name: Player Top
+    uniqueID: 4005334755
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

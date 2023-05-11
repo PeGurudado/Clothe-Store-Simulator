@@ -6,7 +6,7 @@ public class StoreManager : MonoBehaviour
     [SerializeField] PlayerWallet playerWallet; 
     [SerializeField] PlayerItemsManager playerItemsManager;
 
-    [SerializeField] ItemHolder itemPrefab;
+    [SerializeField] ShopItemHolder itemPrefab;
 
     [SerializeField] Item[] itemsShopList;     
 
@@ -22,7 +22,7 @@ public class StoreManager : MonoBehaviour
     {
         foreach (Item shopItem in itemsShopList)
         {
-            ItemHolder newItem = Instantiate(itemPrefab, buyListContent.transform);
+            ShopItemHolder newItem = Instantiate(itemPrefab, buyListContent.transform);
             newItem.IsBuyButton = true;  //Sets the button to call Buy 
             newItem.gameObject.SetActive(true);
             newItem.Item = shopItem;
@@ -30,7 +30,7 @@ public class StoreManager : MonoBehaviour
 
         foreach (var owneditem in playerItemsManager.ownedItems)
         {
-            ItemHolder newItem = Instantiate(itemPrefab, sellListContent.transform);
+            ShopItemHolder newItem = Instantiate(itemPrefab, sellListContent.transform);
             newItem.IsBuyButton = false;  //Sets the button to call Sell 
             newItem.gameObject.SetActive(true);
             newItem.Item = owneditem.Value;
@@ -48,7 +48,7 @@ public class StoreManager : MonoBehaviour
         return false;
     }
 
-    public bool Buy(ItemHolder itemHolder){        
+    public bool Buy(ShopItemHolder itemHolder){        
         if(!HasEnoughMoney(itemHolder.Item.Price)) return false;
 
         playerWallet.CurrentCash -= itemHolder.Item.Price; //Reduces Player's money
@@ -61,7 +61,7 @@ public class StoreManager : MonoBehaviour
         return true;
     }
 
-    public void Sell(ItemHolder itemHolder){
+    public void Sell(ShopItemHolder itemHolder){
         playerWallet.CurrentCash += (playerItemsManager.ownedItems[itemHolder.Item.Name].Price); //Adds item value to player wallet
         playerItemsManager.ownedItems.Remove(itemHolder.Item.Name); //Remove item from player item's list
 
