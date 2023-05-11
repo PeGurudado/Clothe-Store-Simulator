@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor Background
+    uniqueID: 1572182749
+    locked: 0
+  - name: Obstacles Background
+    uniqueID: 3104129507
+    locked: 0
   - name: Player Body
     uniqueID: 1812784625
     locked: 0
