@@ -65,6 +65,12 @@ public class StoreManager : MonoBehaviour
         playerWallet.CurrentCash += (playerItemsManager.ownedItems[itemHolder.Item.Name].Price); //Adds item value to player wallet
         playerItemsManager.ownedItems.Remove(itemHolder.Item.Name); //Remove item from player item's list
 
+        //Checks if player was with that item equipped
+        if(playerItemsManager.equippedItems.ContainsKey(itemHolder.Item.Type) && playerItemsManager.equippedItems[itemHolder.Item.Type] == itemHolder.Item)
+        {
+            playerItemsManager.EquipNewItem(itemHolder.Item); //If has, calls equip function again to desequip
+        }
+
         itemHolder.transform.SetParent(buyListContent.transform); //Sends item frame to Buy List
         itemHolder.IsBuyButton = true; //Sets button to call Buy
         UpdatePlayerMoneyUI();
